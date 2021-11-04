@@ -6,6 +6,6 @@ Vue_without_nodejs
 - again a nice frontend for my laravel backend 
 - please use latest laravelAirline tag
 
-# stil to do
+# still to do
 
 - having fun and make it nice
