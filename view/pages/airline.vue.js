@@ -1,8 +1,8 @@
 var airlines = Vue.component("airlines", {
     template: `
 <div class="mt-9 px-5">
-<v-row v-if="loading" >
-    <v-progress-circular col-3  :width="3" indeterminate color="red"></v-progress-circular>
+<v-row v-if="loading" class="mx-auto">
+    <v-progress-circular   :width="3" indeterminate color="red"></v-progress-circular>
  </v-row>  
    <div v-else>
        
@@ -11,14 +11,14 @@ var airlines = Vue.component("airlines", {
           v-model="pagination.perPage"
           :items="items"
           label="Items Per Site"
+          class="px-2"
           @input="onPageChange"
-          class="col-3 flex-shrink-1"     
         /> 
         
         <v-text-field 
         label="Search by Name"
           v-model="searchInput"
-          class="col-6 order-3"
+          class="px-2"
           @input="onPageChange"
         />
         </div>
