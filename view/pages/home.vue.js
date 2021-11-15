@@ -3,7 +3,7 @@ var airhome = Vue.component("Home",{
 
 template: `<div>
 
-             <v-layout d-flex column align-center elevation-5 pa-3 rounded-sm>
+             <v-layout d-flex column align-center elevation-5 pa-3 mt-10 rounded-sm>
                     <h1 class="display-1 mb-2">
                         Awesome Frontend for Awesome Backend
                     </h1>

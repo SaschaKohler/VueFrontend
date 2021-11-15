@@ -4,14 +4,14 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: "/",
+        name:'home',
         component: airhome,
     },
 
     {
         path: "/airlines",
+        name:"airlines",
         component: airlines,
-        // component: () =>
-        //     import("../pages/airlines.vue.js"),
     },
     //
     // {
@@ -24,11 +24,11 @@ const routes = [
         path:"/airlines/:id",
         component: editAirline,
     },
-    // {
-    //     path:"/passengers/:id",
-    //     name: "passengerList",
-    //     component: () => import('../views/Passengers.vue'),
-    // },
+    {
+        path:"/passengers/:id",
+        component: passengerList
+
+    },
     {
         path: "*",
         name: "404error",
@@ -54,7 +54,7 @@ var app = new Vue({
 
     },
     data: {
-        msg: 'Crazy Vue without node.js',
+        msg: 'Simple Frontend for Airline-API',
         email: ''
     },
     methods: {},

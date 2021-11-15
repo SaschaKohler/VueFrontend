@@ -68,6 +68,15 @@ var editAirline = Vue.component('edit-airline', {
       >
        toggle Edit
       </v-btn>
+      
+      <v-btn
+        color="deep-purple lighten-2"
+        text
+        @click="$router.push('/airlines')"
+      >
+       Back
+      </v-btn>
+      
       <v-btn
         color="yellow lighten-2"
         text
@@ -88,18 +97,17 @@ var editAirline = Vue.component('edit-airline', {
     },
     data: () => ({
 
-            loading : false,
-            airline :  [],
-            errored: false,
-            updated: false,
-            isUpdating: false,
-            editing: false,
+        loading: false,
+        airline: [],
+        errored: false,
+        updated: false,
+        isUpdating: false,
+        editing: false,
         rules: [
             value => !!value || 'Required.',
             value => (value && value.length >= 3) || 'Min 3 characters',
             value => (value && value.length <= 10) || 'Max 10 characters'
         ],
-
 
 
     }),
