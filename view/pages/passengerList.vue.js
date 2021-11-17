@@ -48,7 +48,7 @@ var passengerList = Vue.component('passenger-list', {
                    </v-simple-table>
          </div> 
     `,
-    props: ["id", "airliner"],
+    props: [],
     $_veeValidate: {
         validator: "new"
     },
@@ -108,10 +108,6 @@ var passengerList = Vue.component('passenger-list', {
         },
         onPageChange() {
             this.getPassengersById()
-        },
-        back() {
-            this.$route.push({path: '/'});
-
         },
 
     },

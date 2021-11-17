@@ -19,6 +19,7 @@ var editAirline = Vue.component('edit-airline', {
       height="100"
       :src=airline.logo
       alt="No logo"
+      v-if="airline.logo"
      
     ></v-img>
      <p v-else>No logo</p>
@@ -61,31 +62,55 @@ var editAirline = Vue.component('edit-airline', {
   
     <v-divider></v-divider>  
     <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-        @click="toggleEdit"
-      >
-       toggle Edit
-      </v-btn>
-      
-      <v-btn
-        color="deep-purple lighten-2"
-        text
+    <v-chip
+      class="ma-2"
+      color="amber accent-4"
+      outlined
+      v-if="!editing"
+      @click="toggleEdit"
+    >
+      <v-icon left>
+        mdi-wrench
+      </v-icon>
+      Edit Branding
+    </v-chip>
+        
+     <v-chip
+      class="ma-2"
+      color="red lighten-3"
+      outlined
+      v-if="editing"
+      @click="toggleEdit"
+    >
+      <v-icon left>
+        mdi-cancel
+      </v-icon>
+      Dismiss
+    </v-chip>
+     <v-chip
+      class="ma-2"
+      color="green lighten-3"
+      outlined
+      v-if="editing"
+      @click="updateAirlineName"
+    >
+      <v-icon left>
+        mdi-checkbox-marked-circle
+      </v-icon>
+      Confirm
+    </v-chip>
+     
+       <v-btn
+       absolute
+       right
+        class="amber lighten-5 amber--text text--darken-4"
+        
+        v-if="!editing"
         @click="$router.push('/airlines')"
       >
        Back
       </v-btn>
-      
-      <v-btn
-        color="yellow lighten-2"
-        text
-        v-if="editing"
-        @click="updateAirlineName"
-      >
-       Update
-      </v-btn>
-      
+    
     </v-card-actions>
   </v-card>
 </template>

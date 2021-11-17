@@ -4,13 +4,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" name="viewport">
 </head>
 <body>
 <div id="app">
     <v-app>
-        <nav-toolbar :title="msg"></nav-toolbar>
+        <nav-toolbar :title="msg" :username="username" :key="$route.fullPath"></nav-toolbar>
         <v-main>
                 <v-container flex flex-column>
                 <router-view></router-view>
@@ -30,6 +31,9 @@
 <script src="view/pages/airline.vue.js"></script>
 <script src="view/pages/passengerList.vue.js"></script>
 <script src="view/pages/editAirline.vue.js"></script>
+<script src="view/pages/createAirline.vue.js"></script>
+<script src="view/pages/registerUser.vue.js"></script>
+<script src="view/pages/loginUser.vue.js"></script>
 <script src="view/pages/components/airline-cards.vue.js"></script>
 
 

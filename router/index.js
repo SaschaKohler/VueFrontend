@@ -7,19 +7,31 @@ const routes = [
         name:'home',
         component: airhome,
     },
+    {
+        path: '/register',
+        name: 'register',
+        component: registerUser,
+
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: loginUser,
+
+    },
+
 
     {
         path: "/airlines",
         name:"airlines",
         component: airlines,
     },
-    //
-    // {
-    //     path: "/create-airline",
-    //     name: "createAirline",
-    //     component: () =>
-    //         import("../views/createAirline.vue"),
-    // },
+
+    {
+        path: "/create-airline",
+        name: "createAirline",
+        component: createAirline
+    },
     {
         path:"/airlines/:id",
         component: editAirline,
@@ -49,15 +61,22 @@ let router = new VueRouter({
 
 var app = new Vue({
     el: '#app',
-    watch: {},
+    watch: {
+        username(newName){
+            localStorage.username = newName;
+        }
+    },
     mounted() {
-
+        if(localStorage.username) this.username =
+            localStorage.username
+        this.username=""
     },
     data: {
         msg: 'Simple Frontend for Airline-API',
-        email: ''
+        username: ''
     },
     methods: {},
+
     vuetify: new Vuetify(),
     router
 })
