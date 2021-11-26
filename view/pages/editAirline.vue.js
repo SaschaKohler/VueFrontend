@@ -14,8 +14,20 @@ var editAirline = Vue.component('edit-airline', {
         indeterminate
       ></v-progress-linear>
     </template>
-
+    
+      <v-btn
+      class="mb-5 elevation-0"
+       @click="$router.push('/airlines')"   
+       
+       >
+        <v-icon left>
+            mdi-backspace-outline          
+      </v-icon>
+       Back
+      </v-btn>
+    <v-divider></v-divider>
     <v-img
+       class="mt-5"
       height="100"
       :src=airline.logo
       alt="No logo"
@@ -28,8 +40,10 @@ var editAirline = Vue.component('edit-airline', {
     <v-text-field v-if="editing"
       label="Edit the Name"
       :rules="rules"
+      hint="Something reasonable!"
       v-model="airline.name"
-      
+      clearable
+      color="brown"
       
     ></v-text-field>
     
@@ -64,7 +78,7 @@ var editAirline = Vue.component('edit-airline', {
     <v-card-actions>
     <v-chip
       class="ma-2"
-      color="amber accent-4"
+      color="brown accent-4"
       outlined
       v-if="!editing"
       @click="toggleEdit"
@@ -74,10 +88,23 @@ var editAirline = Vue.component('edit-airline', {
       </v-icon>
       Edit Branding
     </v-chip>
+    <v-chip
+      class="ma-2"
+      color="brown accent-4"
+      outlined
+      v-if="!editing"
+      :airlineID="airline.id"
+      @click="$router.push('/passengers/' + airline.id)"
+    >
+      <v-icon left>
+        mdi-airplane-search
+      </v-icon>
+      List of Passengers
+    </v-chip>
         
      <v-chip
       class="ma-2"
-      color="red lighten-3"
+      color="red"
       outlined
       v-if="editing"
       @click="toggleEdit"
@@ -89,8 +116,9 @@ var editAirline = Vue.component('edit-airline', {
     </v-chip>
      <v-chip
       class="ma-2"
-      color="green lighten-3"
+      color="green"
       outlined
+      diasbled="!valid"
       v-if="editing"
       @click="updateAirlineName"
     >
@@ -100,16 +128,7 @@ var editAirline = Vue.component('edit-airline', {
       Confirm
     </v-chip>
      
-       <v-btn
-       absolute
-       right
-        class="amber lighten-5 amber--text text--darken-4"
-        
-        v-if="!editing"
-        @click="$router.push('/airlines')"
-      >
-       Back
-      </v-btn>
+     
     
     </v-card-actions>
   </v-card>

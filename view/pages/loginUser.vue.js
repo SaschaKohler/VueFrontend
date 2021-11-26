@@ -2,16 +2,16 @@ var loginUser = Vue.component('login-User', {
     template: `
     <v-card 
       :elevation="2"
-      class="mx-auto my-12 pa-3 w-full" 
-      max-width="">
+      class="mx-auto my-12 pa-3" 
+      max-width="400px">
 
     <v-form 
         ref="form"
          v-model="valid">
-      <ul v-if="errorMessage" v-for="error in errorMessage" class="red--text text-caption">
-        <li>{{error}}</li>
-        
-</ul>
+         <p class="text-overline">Login</p>
+      <ul v-if="errorMessage"  class="red--text text-caption mb-2">
+        <li v-for="error in errorMessage">{{error}}</li>  
+        </ul>
 
       <v-text-field
             label="Username"
@@ -24,6 +24,7 @@ var loginUser = Vue.component('login-User', {
             label="password"
             color="brown"
             :counter="25"
+            type="password"
             v-model="user.password"
             :rules="passRules">
         </v-text-field>
@@ -53,7 +54,7 @@ var loginUser = Vue.component('login-User', {
     
  </div>
 </v-form>
-<p class="text-center gray--text pt-5 ">
+<p class="text-center text-caption gray--text pt-5 ">
     &copy;2021 sksoft Corp. All rights reserved.
 </p>
 </v-card>`,
@@ -109,25 +110,25 @@ var loginUser = Vue.component('login-User', {
                     password: this.user.password,
 
                 });
-                this.response = response.data
-            } catch (error) {
-                console.log(error)
-            } finally {
-                if(this.response.error ) {
-                    console.log('error ' + this.response.error)
-                    this.errored=true
+                this.response = response
+            } catch (error) { // 401
+                console.log(error.response.data)
+                this.errored = true
+                this.errorMessage = error.response.data
 
-                    this.errorMessage = this.response
-                }
-                else{
-                    console.log('successfull '+ this.response.username);
-                    this.errored=false
-                    this.errorMessage=[];
+            } finally {
+                if(this.response.status === 201) {
+
+                    console.log('successfull ' + this.response.data.user.username);
+                    this.errored = false
+                    this.errorMessage = [];
                     this.reset();
-                    localStorage.setItem('username', this.response.username);
-                    router.push( {path:'/', params: { username: this.response.username}});
-                }
+                    localStorage.setItem('username', this.response.data.user.username);
+                    localStorage.setItem('usertoken',this.response.data.token)
+                    router.push({path: '/'});
+              }
             }
+
         },
         reset() {
             this.$refs.form.reset()

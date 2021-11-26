@@ -26,6 +26,16 @@ var passengerList = Vue.component('passenger-list', {
                       to {{this.pagination.to}} of total {{this.pagination.total}} </p>     
            
           
+                    <v-btn
+                        class="mb-5 elevation-0"
+                        @click="$router.push('/airlines/' + airline.id)" 
+                     >
+                    <v-icon left>
+                        mdi-backspace-outline          
+                    </v-icon>
+                        Back
+                   </v-btn>
+                   
                    <v-simple-table class="pt-9 pb-9">
                      <thead>
                 <tr>
@@ -48,7 +58,7 @@ var passengerList = Vue.component('passenger-list', {
                    </v-simple-table>
          </div> 
     `,
-    props: [],
+    props: ['airlineID'],
     $_veeValidate: {
         validator: "new"
     },

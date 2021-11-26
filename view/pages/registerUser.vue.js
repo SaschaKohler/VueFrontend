@@ -2,28 +2,30 @@ var registerUser = Vue.component('register-User', {
     template: `
     <v-card 
       :elevation="2"
-      class="mx-auto my-12 pa-3 w-full" 
-      max-width="">
+      class="mx-auto my-12 pa-3"
+      width="600">
 
     <v-form 
         ref="form"
          v-model="valid">
-      <ul v-if="errorMessage" v-for="error in errorMessage" class="red--text text-caption mb-4">
-        <li >{{error}}</li>
-        
-</ul>
+         <p class="text-overline">Registration</p>
+         <ul v-if="errorMessage"  class="red--text text-caption mb-4">
+                 <li v-for="error in errorMessage">{{error}}</li>       
+         </ul>
 
       <v-text-field
             label="Name"
             color="brown"
             :counter="25"
             v-model="user.name"
+            clearable
             :rules="nameRules">
         </v-text-field>
       <v-text-field
             label="Username"
             color="brown"
             :counter="25"
+             clearable
             v-model="user.username"
             :rules="nameRules">
         </v-text-field>
@@ -32,6 +34,8 @@ var registerUser = Vue.component('register-User', {
             color="brown"
             :counter="25"
             v-model="user.email"
+             clearable
+            hint="Please, provide valid mail address"
             :rules="emailRules">
         </v-text-field>
         <v-text-field
@@ -39,7 +43,19 @@ var registerUser = Vue.component('register-User', {
             color="brown"
             :counter="25"
             v-model="user.password"
+            type="password"
+             clearable
             :rules="passRules">
+        </v-text-field>
+        <v-text-field
+            label="Password confirm"
+            color="brown"
+            :counter="25"
+            v-model="user.password_confirmation"
+            :rules="passRules"
+             type="password"
+             clearable
+            class="mb-6">
         </v-text-field>
        
       <v-btn
@@ -62,7 +78,7 @@ var registerUser = Vue.component('register-User', {
     </v-btn>
  </div>
 </v-form>
-<p class="text-center gray--text pt-5 ">
+<p class="text-center taext-caption gray--text pt-5 ">
     &copy;2021 sksoft Corp. All rights reserved.
 </p>
 </v-card>`,
@@ -95,6 +111,7 @@ var registerUser = Vue.component('register-User', {
             username:'',
             email:'',
             password:'',
+            password_confirmation:'',
         },
         errored: false,
         updated: false,
@@ -118,26 +135,23 @@ var registerUser = Vue.component('register-User', {
                     username: this.user.username,
                     email: this.user.email,
                     password: this.user.password,
+                    password_confirmation: this.user.password_confirmation
 
                 });
-                this.response = response.data
+                this.response = response
+                console.log('successfull ' + this.response.data.user);
+                this.errored = false
+                this.errorMessage = [];
+                this.reset();
+                localStorage.setItem('username', this.response.data.user.username);
+                localStorage.setItem('usertoken', this.response.data.token);
+                router.push({path: '/', params: {username: this.response.data.user.username}});
             } catch (error) {
-                console.log(error)
-            } finally {
-                if(!this.response.username ) {
-                    console.log('error ' + this.response)
-                    this.errored=true
+                console.log(error.response.data)
+                this.errored=true
 
-                    this.errorMessage = this.response
-                }
-                else{
-                    console.log('successfull '+ this.response.username);
-                    this.errored=false
-                    this.errorMessage=[];
-                    this.reset();
-                    localStorage.setItem('username', this.response.username);
-                    router.push( {path:'/', params: { username: this.response.username}});
-                }
+                this.errorMessage = error.response.data
+
             }
         },
         reset() {

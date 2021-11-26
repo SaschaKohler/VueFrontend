@@ -5,9 +5,8 @@ Vue.component('airline-cards', {
         <v-card
                 :class="{ 'on-hover' : hover }"
                 :elevation="hover ? 16 : 2"
-                class=" mx-auto my-12 pa-3"
-                max-width="370"
-        >
+                class="mx-auto my-12 pa-3"
+                width="400">
             <v-img
                     contain
                     :aspect-ratio="16/9"
@@ -16,7 +15,7 @@ Vue.component('airline-cards', {
                     height="100"
             ></v-img>
             <div class="pa-2">
-                <v-card-title class="text-h5" >{{airline.name}}</v-card-title>
+                <v-card-title class="text-h5">{{airline.name}}</v-card-title>
             </div>
             <v-card-text>
                 <v-row
@@ -38,10 +37,16 @@ Vue.component('airline-cards', {
                 </v-row>
             </v-card-text>
             <v-divider></v-divider>
-            <v-card-action class="d-flex flex-column pa-3" >
-                <v-btn :elevation="1" color="amber lighten-5" class="amber--text text--darken-4" @click="$router.push('/airlines/' + airline.id)">Details</v-btn>
-                <v-btn :elevation="1" color="amber lighten-5" class="mt-4 amber--text text--darken-4" @click="$router.push('/passengers/' + airline.id)">Passengers</v-btn>
-                </v-card-action>
+                 <v-fade-transition>
+          <v-overlay
+            v-if="hover"
+            absolute
+            color="amber lighten-2"
+             >
+                <v-btn :elevation="0" color="brown"  class="amber--text text--lighten-4" @click="$router.push('/airlines/' + airline.id)"><v-icon left>mdi-airplane-search</v-icon>Details</v-btn>
+                <v-btn :elevation="0" color="brown "  class="ml-2 amber--text text--lighten-4" @click="$router.push('/passengers/' + airline.id)"><v-icon left>mdi-account-search</v-icon>Passengers</v-btn>
+          </v-overlay>
+        </v-fade-transition>
         </v-card>
     </v-hover>
 </div>`,

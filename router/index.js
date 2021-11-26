@@ -19,14 +19,17 @@ const routes = [
         component: loginUser,
 
     },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: profileUser,
 
-
+    },
     {
         path: "/airlines",
         name:"airlines",
-        component: airlines,
+        component: airlines
     },
-
     {
         path: "/create-airline",
         name: "createAirline",
@@ -43,15 +46,15 @@ const routes = [
     },
     {
         path: "*",
-        name: "404error",
-        component: () => import('../views/404.vue'),
+        name: "error404",
+        component: error404
 
     },
 
 ];
 
-let router = new VueRouter({
-    //mode: 'history',
+const router = new VueRouter({
+     mode: 'history',
     routes // short for `routes: routes`
 })
 
@@ -61,11 +64,11 @@ let router = new VueRouter({
 
 var app = new Vue({
     el: '#app',
-    watch: {
-        username(newName){
-            localStorage.username = newName;
-        }
-    },
+    // watch: {
+    //     username(newName){
+    //         localStorage.username = newName;
+    //     }
+    // },
     mounted() {
         if(localStorage.username) this.username =
             localStorage.username
