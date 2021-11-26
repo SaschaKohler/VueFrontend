@@ -4,4 +4,4 @@ FROM nginx:alpine
 COPY . /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 COPY heroku.conf /etc/nginx/conf.d/heroku.conf
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/heroku .conf && nginx -g 'daemon off;'
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/heroku.conf && nginx -g 'daemon off;'
