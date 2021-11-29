@@ -4,6 +4,9 @@ var airlines = Vue.component("airlines", {
 <v-row v-if="loading" class="mx-auto">
     <v-progress-circular   :width="3" indeterminate color="red"></v-progress-circular>
  </v-row>  
+ <div v-if="airlines == '' && !loading">
+    <h1 class="text-h2 text-center">Upps, no Airlines yet</h1>
+</div>
    <div v-else>
        
        <div class="d-flex d-sm-flex justify-sm-center flex-sm-wrap flex-wrap">
