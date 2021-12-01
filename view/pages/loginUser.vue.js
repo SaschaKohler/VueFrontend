@@ -3,7 +3,7 @@ var loginUser = Vue.component('login-User', {
     <v-card 
       :elevation="2"
       class="mx-auto my-12 pa-3" 
-      max-width="600px">
+      max-width="600">
 
     <v-form 
         ref="form"
