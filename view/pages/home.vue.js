@@ -2,7 +2,7 @@
 var airhome = Vue.component("Home",{
 
 template: `<div>
-             <v-layout align-center flex-wrap class="d-sm-flex flex-sm-column flex-md-column flex-lg-row ">
+             <v-layout align-center flex-wrap class="d-sm-flex flex-sm-column flex-md-column flex-lg-row">
                    <v-layout d-flex flex-column align-center justify-space-between>
                   <v-img
                    :src="me"
@@ -19,26 +19,26 @@ template: `<div>
                    <p>Fake API</p>
                    
                 </v-layout>
-                   <h1 class="text-h1 amber--text text-center px-2 elevation-1 pa-5 ma-3 rounded-xl">VS.</h1>
+                   <h1 class="text-h1 amber--text text-center px-2 mx-auto elevation-1 pa-5 rounded-xl">VS.</h1>
                    <v-layout d-flex align-center justify-space-between flex-sm-row flex-md-column flex-wrap>
-                    <p class="green--text text center text-h6 pa-5">Vue.js
+                    <p class="green--text text-center text-h6 pa-5">Vue.js
                     <v-img
                        :src="vue"
                         width="100"
                         />
                     </p>
-                    <p class="red--text text center text-h6 pa-5">Laravel
+                    <p class="red--text text-center text-h6 pa-5">Laravel
                     <v-img
                    :src="laravel"
                    width="100"
                    />
                     </p>
-                    <p class="blue--text text center text-h6 pa-5" >Vuetify 
+                    <p class="blue--text text-center text-h6 pa-5" >Vuetify 
                     <v-img
                    :src="vuetify"
                    width="100"
                    /></p>
-                    <p class="blue--text text--darken-2 text center text-h6 pa-5" >Docker
+                    <p class="blue--text text--darken-2 text-center text-h6 pa-5" >Docker
                     <v-img
                    :src="docker"
                    width="100"
