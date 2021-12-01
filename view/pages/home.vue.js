@@ -47,9 +47,9 @@ template: `<div>
                   </v-layout>
                 </v-layout>
                     <p class="mt-2 px-4 text center">
-                        Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries
-                        for
-                        previewing layouts and visual mockups.
+                        Loremum ad aliquaruum is ja wirklich nur n'en Platzhalter wo eigentlich jede Menge 
+                        text stehen sollte, also freu ich mich um so mehr das DU das hier liest.
+                        Wie der Wiener zu sagen pflegt:"Bussi,baba"...
                         </p>
                
        
