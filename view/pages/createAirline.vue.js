@@ -134,7 +134,6 @@ var createAirline = Vue.component('create-airline', {
     watch: {
         alertSuccess(value) {
             this.hide_alertSuccess()
-
         }
     },
     mounted() {
@@ -164,7 +163,6 @@ var createAirline = Vue.component('create-airline', {
                 });
                 this.response = response;
             } catch (error) {   // 401,406
-                console.log(error.response.data)
                 this.errored = true
                 this.errorMessage = error.response.data
             } finally {

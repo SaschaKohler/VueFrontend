@@ -5,7 +5,7 @@ var airlines = Vue.component("airlines", {
     <v-progress-circular   :width="3" indeterminate color="red"></v-progress-circular>
  </v-row>  
  <div v-if="airlines == '' && !loading">
-    <h1 class="text-h2 text-center">Upps, no Airlines yet</h1>
+    <h1 class="text-h2 mt-3 text-center">Upps, no Airlines yet</h1>
 </div>
    <div v-else>
        
@@ -28,19 +28,20 @@ var airlines = Vue.component("airlines", {
         />
         </div>
     <div class="text-center">
-       <p class="text-caption font-weight-bold">Showing {{ this.pagination.from }} 
-       to {{this.pagination.to}} of total {{this.pagination.total}}</p>       
             <v-pagination
               v-model="pagination.current"
-              class="my-4"
-              color="amber lighten-3 amber--text text--darken-4 "
+              class="my-4 amber lighten-4"
+              color="amber lighten-3 amber--text text--darken-4"
               :length="pagination.lastPage"
               :total-visible="7"
               @input="onPageChange"
             ></v-pagination>
+       <p class="text-caption font-weight-bold">Showing {{ this.pagination.from }} 
+       to {{this.pagination.to}} of total {{this.pagination.total}}</p>       
+   
    </div>
     
-  <v-simple-table   class="d-none d-md-flex pt-9 pb-9 ">
+  <v-simple-table   class="d-none d-md-flex justify-center pt-9 pb-9 ">
         <thead>
         <tr>
             <th class="text-center">
@@ -62,7 +63,7 @@ var airlines = Vue.component("airlines", {
         v-for="airline in airlines.data" :key="airline.id">
     
  
-        <tr   :class="{'gray lighten-4' : hover }" @click="$router.push('/airlines/' + airline.id)" >
+        <tr  :class="{'gray lighten-4' : hover }" @click="$router.push('/airlines/' + airline.id)" >
         <td><v-img  contain :aspect-ratio="16/9" width="200" v-bind:src="airline.logo" ></v-img></td>
         <td class="pa-5">
         <p class="text-h6">{{ airline.name }}</p>
@@ -73,10 +74,6 @@ var airlines = Vue.component("airlines", {
          <p>{{airline.website}}</p>
          </td>
         <td class="text-h6 amber--text text--darken-4">{{airline.established}}</td>
-<!--        <td class="text-center">-->
-<!--              <v-btn small outlined :elevation="0" color="amber"  class="amber&#45;&#45;text" @click="$router.push('/airlines/' + airline.id)"><v-icon left>mdi-airplane-search</v-icon>Details</v-btn>-->
-<!--                <v-btn small outlined :elevation="0" color="amber"  class="ml-2 amber&#45;&#45;text" @click="$router.push('/passengers/' + airline.id)"><v-icon left>mdi-account-search</v-icon>Passengers</v-btn>-->
-<!--          </td>-->
         </tr>
     
      
@@ -99,8 +96,6 @@ var airlines = Vue.component("airlines", {
    </div>
   </div>
   </div>
- 
-
 `,
     props: ["title"],
     $_veeValidate: {

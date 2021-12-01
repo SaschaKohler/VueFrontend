@@ -1,31 +1,32 @@
 var passengerList = Vue.component('passenger-list', {
     template: `
-<div class="mt-9 px-5">
-                   <v-row>      
+<div class="mt-9 px-5" v-if="passengers.from != null" >
+                   <v-row>
                    <v-select 
                       v-model="pagination.perPage"
                       :items="items"
+                      color="brown"
+                      class="px-5"
                       label="Items Per Site"
                       @input="onPageChange"
                     ></v-select> 
                         <v-text-field 
-                    label="Search by Name"
-                      v-model="searchInput"
-                      @input="onPageChange"
+                        color="brown"
+                        label="Search by Name"
+                        v-model="searchInput"
+                        @input="onPageChange"
                     />
                     </v-row>
                        <v-pagination
                           v-model="pagination.current"
-                            class="my-4"
+                            color="amber lighten-3 amber--text text--darken-4"
+                            class="my-4 py-2 amber lighten-4"
                              :length="pagination.lastPage"
                              :total-visible="7"
                              @input="onPageChange"
                         ></v-pagination>
                     <p class="text-caption text-center font-weight-bold">Showing {{ this.pagination.from }} 
-           
-                      to {{this.pagination.to}} of total {{this.pagination.total}} </p>     
-           
-          
+                        to {{this.pagination.to}} of total {{this.pagination.total}}</p>     
                     <v-btn
                         class="mb-5 elevation-0"
                         @click="$router.push('/airlines/' + airline.id)" 
@@ -35,14 +36,13 @@ var passengerList = Vue.component('passenger-list', {
                     </v-icon>
                         Back
                    </v-btn>
-                   
                    <v-simple-table class="pt-9 pb-9">
                      <thead>
                 <tr>
                     <th class="text-h6">
                         Name
                     </th>
-                    <th class="text-h6">
+                    <th class="text-h6 text-center">
                      Number of trips
                     </th>
                 </tr>
@@ -51,12 +51,24 @@ var passengerList = Vue.component('passenger-list', {
                           <tr  v-for="passenger in passengers.data" :key="passenger.name">
                            <td class="pa-2">{{ passenger.name }}
                             </td>
-                            <td class="pa-2"> {{passenger.trips}}
+                            <td class="pa-2 text-center"> {{passenger.trips}}
                             </td>
                             </tr>
                         </tbody>
                    </v-simple-table>
          </div> 
+         <div v-else d-flex flex-column justify-center>     
+                      <v-btn
+                        class="mb-5 elevation-0"
+                        @click="$router.push('/airlines/' + airline.id)" 
+                     >
+                     <v-icon left>
+                        mdi-backspace-outline          
+                    </v-icon>Back</v-btn>
+                     <v-divider></v-divider>
+                 
+             <h1 class="text-h2 mt-10 text-center">Upps, no Passengers yet</h1>
+         </div>
     `,
     props: ['airlineID'],
     $_veeValidate: {

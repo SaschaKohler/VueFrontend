@@ -37,6 +37,7 @@ var editAirline = Vue.component('edit-airline', {
      <p v-else>No logo</p>
 
     <div class="pa-2">
+   
     <v-text-field v-if="editing"
       label="Edit the Name"
       :rules="rules"
@@ -114,12 +115,16 @@ var editAirline = Vue.component('edit-airline', {
       </v-icon>
       Dismiss
     </v-chip>
+    <v-form
+      v-model="valid">
      <v-chip
       class="ma-2"
       color="green"
       outlined
-      diasbled="!valid"
+      :disabled="!valid"
+      v-model="valid"
       v-if="editing"
+      active="false"
       @click="updateAirlineName"
     >
       <v-icon left>
@@ -127,6 +132,7 @@ var editAirline = Vue.component('edit-airline', {
       </v-icon>
       Confirm
     </v-chip>
+    </v-form>
      
      
     
@@ -147,10 +153,11 @@ var editAirline = Vue.component('edit-airline', {
         updated: false,
         isUpdating: false,
         editing: false,
+        valid: true,
         rules: [
             value => !!value || 'Required.',
             value => (value && value.length >= 3) || 'Min 3 characters',
-            value => (value && value.length <= 10) || 'Max 10 characters'
+            value => (value && value.length <= 25) || 'Max 25 characters'
         ],
 
 

@@ -1,7 +1,7 @@
 Vue.component("nav-toolbar", {
     template: `
     <div>
-     <v-app-bar  color="amber" class="mb-3"> 
+     <v-app-bar app clipped-left color="amber" class="mb-3"> 
         <v-layout align-center justify-center>
             <v-app-bar-nav-icon x-large v-on:click="menu=!menu"></v-app-bar-nav-icon>
             <v-toolbar-title class="brown--text d-none d-sm-flex">{{title}}</v-toolbar-title>
@@ -57,7 +57,7 @@ Vue.component("nav-toolbar", {
         </v-layout>
      </v-app-bar>
  
-    <v-navigation-drawer app  v-model="menu" class="amber">
+    <v-navigation-drawer app clipped v-model="menu" class="amber">
         <v-list nav>
             <v-list-item-group>
                 <v-list-item    

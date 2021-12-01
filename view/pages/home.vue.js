@@ -2,7 +2,7 @@
 var airhome = Vue.component("Home",{
 
 template: `<div>
-             <v-layout d-flex align-center flex-wrap>
+             <v-layout align-center flex-wrap class="d-sm-flex flex-sm-column flex-md-column flex-lg-row ">
                    <v-layout d-flex flex-column align-center justify-space-between>
                   <v-img
                    :src="me"
@@ -19,21 +19,19 @@ template: `<div>
                    <p>Fake API</p>
                    
                 </v-layout>
-                   <h1 class="text-h1 amber--text px-2 elevation-1 pa-5 rounded-xl">VS.</h1>
-                   <v-layout d-flex flex-column align-center justify-space-between>
+                   <h1 class="text-h1 amber--text px-2 elevation-1 pa-5 ma-3 rounded-xl">VS.</h1>
+                   <v-layout d-flex align-center justify-space-between flex-sm-row flex-md-column flex-wrap>
                     <p class="green--text text center text-h6 pa-5">Vue.js
                     <v-img
                        :src="vue"
                         width="100"
                         />
-                    
                     </p>
                     <p class="red--text text center text-h6 pa-5">Laravel
                     <v-img
                    :src="laravel"
                    width="100"
                    />
-                    
                     </p>
                     <p class="blue--text text center text-h6 pa-5" >Vuetify 
                     <v-img
@@ -48,10 +46,11 @@ template: `<div>
                     
                   </v-layout>
                 </v-layout>
-     <p class="mt-2 px-4">
+                    <p class="mt-2 px-4 text center">
                         Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries
                         for
-                        previewing layouts and visual mockups.</p>
+                        previewing layouts and visual mockups.
+                        </p>
                
        
 
