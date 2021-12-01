@@ -14,7 +14,7 @@ var loginUser = Vue.component('login-User', {
         </ul>
 
       <v-text-field
-            label="Username"
+            label="username"
             color="brown"
             :counter="25"
             v-model="user.username"

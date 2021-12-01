@@ -14,7 +14,7 @@ var registerUser = Vue.component('register-User', {
          </ul>
 
       <v-text-field
-            label="Name"
+            label="name"
             color="brown"
             :counter="25"
             v-model="user.name"
@@ -22,7 +22,7 @@ var registerUser = Vue.component('register-User', {
             :rules="nameRules">
         </v-text-field>
       <v-text-field
-            label="Username"
+            label="username"
             color="brown"
             :counter="25"
              clearable
@@ -48,8 +48,9 @@ var registerUser = Vue.component('register-User', {
             :rules="passRules">
         </v-text-field>
         <v-text-field
-            label="Password confirm"
+            label="password confirmation"
             color="brown"
+            hint="please, repaet your password"
             :counter="25"
             v-model="user.password_confirmation"
             :rules="passRules"
@@ -108,17 +109,17 @@ var registerUser = Vue.component('register-User', {
         loading: false,
         user: {
             name: '',
-            username:'',
-            email:'',
-            password:'',
-            password_confirmation:'',
+            username: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
         },
         errored: false,
         updated: false,
         isUpdating: false,
         editing: false,
         errorMessage: [],
-        response:[]
+        response: []
 
     }),
 
@@ -130,7 +131,7 @@ var registerUser = Vue.component('register-User', {
             this.isUpdating = true;
             this.editing = false
             try {
-                let response = await axios.post('http://localhost/api/register/' , {
+                let response = await axios.post('http://localhost/api/register/', {
                     name: this.user.name,
                     username: this.user.username,
                     email: this.user.email,
@@ -148,7 +149,7 @@ var registerUser = Vue.component('register-User', {
                 router.push({path: '/', params: {username: this.response.data.user.username}});
             } catch (error) {
                 console.log(error.response.data)
-                this.errored=true
+                this.errored = true
 
                 this.errorMessage = error.response.data
 
