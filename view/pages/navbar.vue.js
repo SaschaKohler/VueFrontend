@@ -57,7 +57,7 @@ Vue.component("nav-toolbar", {
         </v-layout>
      </v-app-bar>
  
-    <v-navigation-drawer app clipped v-model="menu" class="amber">
+    <v-navigation-drawer app clipped v-model="menu">
         <v-list nav>
             <v-list-item-group>
                 <v-list-item    
