@@ -47,9 +47,9 @@ template: `<div>
                   </v-layout>
                 </v-layout>
                     <p class="mt-2 px-4 text center">
-                        Loremum ad aliquaruum is ja wirklich nur n'en Platzhalter wo eigentlich jede Menge 
-                        text stehen sollte, also freu ich mich um so mehr das DU das hier liest.
-                        Wie der Wiener zu sagen pflegt:"Bussi,baba"...
+                        Loremum ad (ipsum) aliquaruum non frat,  is ja wirklich nur n'en Platzhalter.Jede Menge 
+                        Text  sollte sollte sollte sollte , also freu ich mich um so mehr das DU das hier liest.
+                        Du armer Tropf..."Bussi,...BaaBaa"...
                         </p>
                
        
