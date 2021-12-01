@@ -19,7 +19,7 @@ template: `<div>
                    <p>Fake API</p>
                    
                 </v-layout>
-                   <h1 class="text-h1 amber--text px-2 elevation-1 pa-5 ma-3 rounded-xl">VS.</h1>
+                   <h1 class="text-h1 amber--text text-center px-2 elevation-1 pa-5 ma-3 rounded-xl">VS.</h1>
                    <v-layout d-flex align-center justify-space-between flex-sm-row flex-md-column flex-wrap>
                     <p class="green--text text center text-h6 pa-5">Vue.js
                     <v-img
