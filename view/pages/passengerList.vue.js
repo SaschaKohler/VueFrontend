@@ -1,6 +1,6 @@
 var passengerList = Vue.component('passenger-list', {
     template: `
-<div class="mt-9 px-5" v-if="passengers.from != null" >
+<div class="mt-9 px-5">
                    <v-row>
                    <v-select 
                       v-model="pagination.perPage"
@@ -36,17 +36,17 @@ var passengerList = Vue.component('passenger-list', {
                     </v-icon>
                         Back
                    </v-btn>
-                   <v-simple-table class="pt-9 pb-9">
+                   <v-simple-table pt-9 pb-9 >
                      <thead>
-                <tr>
+                         <tr>
                     <th class="text-h6">
                         Name
                     </th>
                     <th class="text-h6 text-center">
                      Number of trips
                     </th>
-                </tr>
-        </thead>
+                    </tr>
+                     </thead>
                       <tbody class="">
                           <tr  v-for="passenger in passengers.data" :key="passenger.name">
                            <td class="pa-2">{{ passenger.name }}
@@ -56,20 +56,7 @@ var passengerList = Vue.component('passenger-list', {
                             </tr>
                         </tbody>
                    </v-simple-table>
-         </div> 
-         <div v-else d-flex flex-column justify-center>     
-                      <v-btn
-                        class="mb-5 elevation-0"
-                        @click="$router.push('/airlines/' + airline.id)" 
-                     >
-                     <v-icon left>
-                        mdi-backspace-outline          
-                    </v-icon>Back</v-btn>
-                     <v-divider></v-divider>
-                 
-             <h1 class="text-h2 mt-10 text-center">Upps, no Passengers yet</h1>
-         </div>
-    `,
+       </div>`,
     props: ['airlineID'],
     $_veeValidate: {
         validator: "new"

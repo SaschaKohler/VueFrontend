@@ -95,6 +95,19 @@ var airlines = Vue.component("airlines", {
             ></v-pagination>
    </div>
   </div>
+      <v-btn
+            v-scroll="onScroll"
+            v-show="fab"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="amber lighten-2 brown--text"
+            @click="toTop"
+          >
+            <v-icon x-large>mdi-arrow-up</v-icon>
+          </v-btn>
   </div>
 `,
     props: ["title"],
@@ -103,6 +116,7 @@ var airlines = Vue.component("airlines", {
     },
     data() {
         return {
+            fab: false,
             airlines: [],
             items: ['5','10', '15', '20', '25', '100'],
             NumberOfPassengers: null,
@@ -145,7 +159,17 @@ var airlines = Vue.component("airlines", {
         },
         onPageChange() {
             this.getAirlines();
+        },
+        onScroll (e) {
+            if (typeof window === 'undefined') return
+            const top = window.pageYOffset ||   e.target.scrollTop || 0
+            this.fab = top > 20
+        },
+        toTop () {
+            this.$vuetify.goTo(0)
         }
+
+
     },
     mounted() {
         this.getAirlines();
